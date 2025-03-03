@@ -1,0 +1,18 @@
+[user]
+	email = iandoesallthethings@gmail.com
+	name = iandoesallthethings
+[alias]
+	dotfiles = !git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME
+[init]
+	defaultBranch = main
+[pull]
+	rebase=false
+[fetch]
+	prune=true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[safe]
+	directory = *
