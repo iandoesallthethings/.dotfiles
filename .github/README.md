@@ -6,3 +6,6 @@ It's a mix of [this](https://d2weber.github.io/DougTyped/posts/dotfiles-under-co
 
 `dotfiles` is aliased to `git dotfiles $@` for easy management.
 
+## Getting started
+Just pull this repo straight in to `~/`. You might have to backup existing files first.
+
