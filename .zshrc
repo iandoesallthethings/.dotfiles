@@ -33,7 +33,8 @@ setup_nvim() {
 
 # Shortcuts
 alias cat='bat' # Pretty print when catting
-alias neofetch='fastfetch'
+# alias neofetch='fastfetch'
+alias neofetch='fastfetch | cowsay -n'
 alias nvc="nvim ~/.config/nvim/init.lua"
 alias zshc="nvim ~/.zshrc"
 alias rc="source ~/.zshrc"
