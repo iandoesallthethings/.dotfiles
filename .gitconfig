@@ -16,3 +16,5 @@
 	required = true
 [safe]
 	directory = *
+[credential]
+	helper = osxkeychain
