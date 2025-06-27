@@ -13,11 +13,15 @@ source $ZSH/oh-my-zsh.sh
 
 # Python
 export ASDF_DATA_DIR=$HOME/.asdf
-export PATH="$ASDF_DATA_DIR/shims:$PATH" # ASDF
+export PATH="$ASDF_DATA_DIR/shims:$PATH"  # ASDF
 export PATH="$PATH:/Users/ian/.local/bin" # Created by `pipx` on 2025-01-06 20:03:43
 
+###########
+# HELPERS #
+###########
+
 setup_nvim() {
-	nvim_config="${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
+    nvim_config="${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
     if [ -d "$nvim_config" ]; then
         echo "Neovim is already set up."
         return
@@ -27,24 +31,34 @@ setup_nvim() {
     git clone https://github.com/iandoesallthethings/kickstart.nvim.git "$nvim_config"
 }
 
-##########
-# CONFIG #
-##########
+is_installed() {
+    if [ -z "$(command -v $1)" ]; then
+        echo "$1 is not installed."
+        return 1
+    fi
+}
 
-# Shortcuts
-alias cat='bat' # Pretty print when catting
+#############
+# SHORTCUTS #
+#############
+
 # alias neofetch='fastfetch'
 alias neofetch='fastfetch | cowsay -n'
+alias cat='bat' # Pretty print when catting
 alias nvc="nvim ~/.config/nvim/init.lua"
 alias zshc="nvim ~/.zshrc"
 alias rc="source ~/.zshrc"
 
 dotfiles() {
-        git dotfiles $@
+    git dotfiles $@
 }
 
 # Make streamlit a global (assuming it's installed)
 streamlit() {
-	python -m streamlit run $@
+    is_installed streamlit || return
+    python -m streamlit run $@
 }
+
+# bun completions
+[ -s "/Users/ian/.bun/_bun" ] && source "/Users/ian/.bun/_bun"
 
