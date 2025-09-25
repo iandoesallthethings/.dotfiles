@@ -5,7 +5,10 @@
 export ZSH="$HOME/.oh-my-zsh" # Path to your Oh My Zsh installation.
 ZSH_THEME="robbyrussell"
 plugins=(git)
+plugins+=(zsh-vi-mode)
+
 source $ZSH/oh-my-zsh.sh
+
 
 ##############
 # PATH STUFF #
@@ -19,6 +22,12 @@ export PATH="$PATH:/Users/ian/.local/bin" # Created by `pipx` on 2025-01-06 20:0
 ###########
 # HELPERS #
 ###########
+setup_plugins() {
+    if [ ! -d "$ZSH_CUSTOM/plugins/zsh-vi-mode" ]; then
+        git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH_CUSTOM/plugins/zsh-vi-mode
+        return 
+    fi
+}
 
 setup_nvim() {
     nvim_config="${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
